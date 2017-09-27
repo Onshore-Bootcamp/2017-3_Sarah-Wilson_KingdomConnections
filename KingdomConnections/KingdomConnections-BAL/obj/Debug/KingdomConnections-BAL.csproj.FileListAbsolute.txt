@@ -1,0 +1,5 @@
+C:\Users\Sarah Boot Camp\Documents\Visual Studio 2015\Projects\KingdomConnections\KingdomConnections-BAL\bin\Debug\KingdomConnections-BAL.dll
+C:\Users\Sarah Boot Camp\Documents\Visual Studio 2015\Projects\KingdomConnections\KingdomConnections-BAL\bin\Debug\KingdomConnections-BAL.pdb
+C:\Users\Sarah Boot Camp\Documents\Visual Studio 2015\Projects\KingdomConnections\KingdomConnections-BAL\obj\Debug\KingdomConnections-BAL.dll
+C:\Users\Sarah Boot Camp\Documents\Visual Studio 2015\Projects\KingdomConnections\KingdomConnections-BAL\obj\Debug\KingdomConnections-BAL.pdb
+C:\Users\Sarah Boot Camp\Documents\Visual Studio 2015\Projects\KingdomConnections\KingdomConnections-BAL\obj\Debug\KingdomConnections-BAL.csprojResolveAssemblyReference.cache

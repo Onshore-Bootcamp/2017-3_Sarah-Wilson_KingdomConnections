@@ -1,0 +1,55 @@
+﻿@model KingdomConnections.ViewModels.VolunteerInfoVM
+@{
+    ViewBag.Title = "CreateVolunteer";
+}
+
+<h2> Volunteer</h2>
+
+<div><img src="~/Custom/Images/bannar.jpg" /></div>
+
+
+@using (Html.BeginForm("CreateVolunteer", "Volunteer", FormMethod.Post))
+{
+
+
+    <!--Time Logged Div-->
+    if ((string)Session["Role"] == "power" || (string)Session["Role"] == "admin"|| (string)Session["Role"]=="user")
+    {
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => Model.VolunteerInfo.Time_Logged, "Hours Logged in Hrs")
+            @Html.TextBoxFor(model => Model.VolunteerInfo.Time_Logged, new { @class = "form-control", @placeholder = "Time Logged ..." })
+            @Html.ValidationMessageFor(model => Model.VolunteerInfo.Time_Logged, "", new { @class = "text-danger" })
+        </div>
+ <!--Time Available-->
+        <div class="form-group">
+            @Html.LabelFor(model => Model.VolunteerInfo.Time_Available, "Hours Available to Volunteer")
+            @Html.TextBoxFor(model => Model.VolunteerInfo.Time_Available, new { @class = "form-control", @placeholder = " Time Available..." })
+            @Html.ValidationMessageFor(model => Model.VolunteerInfo.Time_Available, "", new { @class = "text-danger" })
+           
+            <!--User ID-->
+
+            <div class="form-group">
+                @Html.HiddenFor(model => Model.VolunteerInfo.UserID)
+            </div>
+           
+        </div>
+
+            <!--Date Volunteered Div-->
+            <div class="form-group">
+                @Html.LabelFor(model => Model.VolunteerInfo.Date)
+
+                @Html.TextBoxFor(model => Model.VolunteerInfo.Date, new { @class = "form-control", @type = "date" })
+            </div>
+            <!--Submit button-->
+            <div class="form-group">
+                <input class="btn btn-success" type="submit" value="Submit" />
+            </div>
+
+    }
+    else
+    {
+
+    }
+}

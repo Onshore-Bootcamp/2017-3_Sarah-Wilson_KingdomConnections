@@ -1,0 +1,55 @@
+﻿@model KingdomConnections.ViewModels.DonationInfoVM
+@{
+    ViewBag.Title = "UpdateDonationsByID";
+}
+
+<h2>Donation Updating</h2>
+
+@using (Html.BeginForm("UpdateDonationsByID", "Donation", FormMethod.Post))
+{
+    if (Session["UserName"] != null && ((string)Session["Role"] == "power" || (string)Session["Role"] == "admin"))
+    {
+        @Html.Label("User ID #")
+        @Html.TextBoxFor(model => Model.DonationInfo.UserID, new {  @readonly = "readonly" })
+    }
+
+    else
+    {
+        @Html.HiddenFor(model => Model.DonationInfo.UserID)
+    }
+        <!--Amount_of_Donation Div-->
+    <div class="form-group">
+        @Html.LabelFor(model => Model.DonationInfo.Amount_of_Donation, "Dollar amount of Donation")
+        @Html.TextBoxFor(model => Model.DonationInfo.Amount_of_Donation, "{0:C}", new { @class = "form-control", @placeholder = " Amount of Donation..." })
+        @Html.ValidationMessageFor(model => Model.DonationInfo.Amount_of_Donation, "", new { @class = "text-danger" })
+    </div>
+        <!--Date of Donation Div-->
+    <div class="form-group">
+        @Html.LabelFor(model => Model.DonationInfo.Date_of_Donation, "Date of your donation")
+        @Html.TextBoxFor(model => Model.DonationInfo.Date_of_Donation, "{0:MM/dd/yyyy}", new { @class = "form-control", @placeholder = "MM/DD/YYYY..." })
+        @Html.ValidationMessageFor(model => Model.DonationInfo.Date_of_Donation, "", new { @class = "text-danger" })
+    </div>
+
+        <!--tax Receict Given Div-->
+    <div class="form-group">
+        @Html.LabelFor(model => Model.DonationInfo.Tax_Receipt_Given, "Record of Giving")
+        @Html.RadioButtonFor(model => Model.DonationInfo.Tax_Receipt_Given, "True") Yes
+        @Html.RadioButtonFor(model => Model.DonationInfo.Tax_Receipt_Given, "False") No
+        @Html.ValidationMessageFor(model => Model.DonationInfo.Tax_Receipt_Given, "", new { @class = "text-danger" })
+    </div>
+
+        <!--Ministry Needs-->
+        <div class="form-group">
+            @Html.LabelFor(model => Model.DonationInfo.Department_Need, "Pick your Blessing")
+            @Html.DropDownListFor(model => Model.DonationInfo.Department_Need, Model.Departments)
+            @Html.ValidationMessageFor(model => Model.DonationInfo.Department_Need, "", new { @class = "text-danger" })
+        </div>
+
+
+        @Html.HiddenFor(model => Model.DonationInfo.DonationID)
+        <!--Submit button-->
+        <div class="form-group">
+            <input class="btn btn-success" type="submit" value="Submit" />
+        </div>
+}
+

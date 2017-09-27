@@ -1,0 +1,92 @@
+﻿@using KingdomConnections.Models
+@model KingdomConnections.ViewModels.UserInfoVM
+@{
+    ViewBag.Title = "ViewAllUsers";
+}
+
+<h2>View All Partners</h2>
+
+@*@Html.ActionLink("Create a New Partner", "CreateUser", "Users", new { UserID = user.UserID }, null)*@
+
+<!--View All Students Table Div-->
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th hidden> UserID</th>
+                <th>Name</th>
+                <th>Street Address</th>
+                <th>City, State, Zip</th>
+                <th>Phone Number</th>
+                <th>Login</th>
+                <th>Password</th>           
+                 @if (Session["UserName"] != null && (string)Session["Role"] == "admin")
+                 {
+                    <th>Role</th>
+                 }
+                 else
+                 {
+                   <th hidden>Role </th> 
+                 }
+                
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (UserInfoPO user in Model.ListOfAllUsers)
+            {
+                <tr>
+                    <td hidden>@user.UserID</td>
+                    <td>@user.Name</td>
+                    <td>@user.Street_Address</td>
+                    <td>@user.City_State_Zip</td>
+                    <td>@user.Phone_Number</td>
+                    <td>@user.Login</td>
+                    <td>@user.Password</td>
+                    
+                    
+                    
+                    @if (Session["UserName"] != null && (string)Session["Role"] != "power")
+                    {
+                        <td>@user.Role</td>
+                    }
+                    else
+                    {
+
+                    }
+
+                    <td>
+                        @Html.ActionLink("New Volunteer", "CreateVolunteer", "Volunteer",
+                       new { UserID = user.UserID }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("New Donation", "CreateDonation", "Donation",
+                        new { UserID = user.UserID }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Update User Profile", "UpdateUserByID", "Users",
+                    new { UserID = user.UserID }, null)
+                </td>
+
+                    @if (Session["UserName"] != null && (string)Session["Role"] != "power")
+                    {
+                       
+                        <td>@Html.ActionLink("Delete User", "DeleteUserByID", "Users",
+                                new { UserID = user.UserID }, new { onclick = "return confirm('Are you sure you want to delete? This will delete ALL User Information, Donation, and Volunteer Information tied with this User');" })
+                        </td>
+
+                    }
+                    else
+                    {
+
+
+                    }       
+                    
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <!--No need for footer-->
+        </tfoot>
+    </table>
+</div>

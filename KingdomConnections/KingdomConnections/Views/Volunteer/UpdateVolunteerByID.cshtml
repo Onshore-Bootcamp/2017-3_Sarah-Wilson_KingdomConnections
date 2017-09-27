@@ -1,0 +1,52 @@
+﻿@model KingdomConnections.ViewModels.VolunteerInfoVM
+@{
+    ViewBag.Title = "UpdateVolunteerByID";
+}
+
+<h2>Update Volunteer </h2>
+
+
+@using (Html.BeginForm("UpdateVolunteerByID", "Volunteer", FormMethod.Post))
+{
+    <!--Volunteer ID Div-->
+    <div class="form-group">
+        @Html.HiddenFor(model => Model.VolunteerInfo.VolunteerID)
+        @*@Html.Label((string)Session["UserName"])*@
+
+        @*@Html.TextBoxFor(model => Model.VolunteerInfo.VolunteerID, new { @class = "form-control", @placeholder = " Name..." })
+            @Html.ValidationMessageFor(model => Model.VolunteerInfo.VolunteerID, "", new { @class = "text-danger" })*@
+    </div>
+    <!--User ID-->
+    <div class="form-group">
+        @Html.Label("User ID #")
+        @Html.TextBoxFor(model => Model.VolunteerInfo.UserID, new { @class = "form-control", @placeholder = "Name ..." })
+
+    </div>
+
+
+
+
+    <!--User ID-->
+    <div class="form-group">
+        @Html.LabelFor(model => Model.VolunteerInfo.Time_Available, "Hours Available")
+        @Html.TextBoxFor(model => Model.VolunteerInfo.Time_Available, new { @class = "form-control", @placeholder = "Hours Available..." })
+        @Html.ValidationMessageFor(model => Model.VolunteerInfo.Time_Available, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(model => Model.VolunteerInfo.Time_Logged, "Hours Logged in Hrs")
+        @Html.TextBoxFor(model => Model.VolunteerInfo.Time_Logged, new { @class = "form-control", @placeholder = "Time Logged ..." })
+        @Html.ValidationMessageFor(model => Model.VolunteerInfo.Time_Logged, "", new { @class = "text-danger" })
+    </div>
+
+        <!--Date Volunteered Div-->
+        <div class="form-group">
+            @Html.LabelFor(model => Model.VolunteerInfo.Date)
+            @Html.TextBoxFor(model => Model.VolunteerInfo.Date, "{0:MM/dd/yyyy}", new { @class = "form-control", @placeholder = "MM/DD/YYYY..." })
+            @Html.ValidationMessageFor(model => Model.VolunteerInfo.Date, "", new { @class = "text-danger" })
+        </div>
+        <!--Submit button-->
+        <div class="form-group">
+            <input class="btn btn-success" type="submit" value="Submit" />
+        </div>
+}

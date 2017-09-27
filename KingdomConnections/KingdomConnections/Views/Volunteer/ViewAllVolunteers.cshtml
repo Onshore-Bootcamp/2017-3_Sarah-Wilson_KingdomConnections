@@ -1,0 +1,64 @@
+﻿@using KingdomConnections.Models
+@model KingdomConnections.ViewModels.VolunteerInfoVM
+@{
+    ViewBag.Title = "ViewAllVolunteers";
+}
+
+<h2>ViewAllVolunteers</h2>
+
+ 
+
+<!--View All Volunteers Table Div-->
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                @*<th>VolunteerID</th>*@
+                <th>User ID #</th>
+                <th>Hours Logged</th>
+                <th>Date </th>
+                <th>Hours Available </th>
+             @*<th>Active Volunteer</th>*@
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (VolunteerInfoPO volunteer in Model.AllVolunteerInfo)
+            {
+                <tr>
+                  @*<td>@volunteer.VolunteerID</td>*@
+                    
+                    <td>@volunteer.UserID</td>
+                    <td>@volunteer.Time_Logged</td>
+                    <td>@volunteer.Date.ToShortDateString()</td>
+                    <td>@volunteer.Time_Available</td>
+                 @*<td>@volunteer.Flag</td>*@
+
+                    @if (Session["UserName"] != null && (string)Session["Role"] != "power")
+                    {
+                        <td>
+                            @Html.ActionLink("Delete", "DeleteVolunteerByID", "Volunteer",
+                       new { VolunteerID = volunteer.VolunteerID }, null)
+                    </td>
+                    }
+                    else
+                    {
+
+                    }
+                                       
+                    <td>
+                        @Html.ActionLink("Update", "UpdateVolunteerByID", "Volunteer",
+                           new { VolunteerID = volunteer.VolunteerID }, null)
+                </td>
+                    <td>@Html.ActionLink("New Volunteer", "CreateVolunteer", "Volunteer",
+                       new { UserID = volunteer.UserID }, null)</td>  
+                </tr>
+
+            }
+        </tbody>
+        <tfoot>
+            <!--No need for footer-->
+        </tfoot>
+    </table>
+</div>

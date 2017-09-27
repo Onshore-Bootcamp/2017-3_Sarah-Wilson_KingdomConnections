@@ -1,0 +1,55 @@
+﻿@model KingdomConnections.ViewModels.UserInfoVM
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profile</h2>
+
+@using (Html.BeginForm("Profile", "Users", FormMethod.Get))
+{
+    <!--First Name Div-->
+
+    @Html.Label("First & Last Name")
+    <div class="form-control" style="border-color:black; width: 25%;  ">
+        @Html.Label(Model.UserInfo.Name)
+    </div>
+
+    <!--Street Address Div-->
+    @Html.Label("Street Address")
+    <div class="form-control" style="border-color:black; width: 25%;  ">
+        @Html.Label(Model.UserInfo.Street_Address)
+    </div>
+
+    <!--City, State, Zip Div-->
+
+    @Html.Label("City, State, Zip")
+    <div class="form-control" style="border-color:black; width: 25%;  ">
+        @Html.Label(Model.UserInfo.City_State_Zip)
+    </div>
+
+    <!--Phone Number Div-->
+
+    @Html.Label("Phone Number")
+    <div class="form-control" style="border-color:black; width: 25%;  ">
+        @Html.Label(Model.UserInfo.Phone_Number)
+    </div>
+
+    <!--Login Div-->
+
+        @Html.Label("User Name")
+        <div class="form-control" style="border-color:black; width: 25%;  ">
+            @Html.Label(Model.UserInfo.Login)
+        </div>
+
+
+    <!--Role Request Div-->
+        @Html.Label("User Space Role")
+        <div class="form-control" style="border-color:black; width: 25%;  ">
+            @Html.Label(Model.UserInfo.Role)
+        </div>
+
+
+
+}

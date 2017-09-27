@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<script src="~/Scripts/SocialMediaButtons.js"></script>
+<link href="~/Content/SocialMedia.css" rel="stylesheet" />
+<div class="jumbotron">
+    <h1></h1>
+    <img src="~/Custom/Images/kcbanner.jpg" />
+    <p class="lead"></p>
+    
+</div>
+<div class="container">
+    <div class="row">
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Stay Connected with Facebook! </h2>
+        <p>
+            God did not intend for any of us to walk this Journey we call life out alone, that is why he made humans to be able to communicate so that we can come together and fellowship,
+         pray for one another, stregthen and encougerage the ones that are strugling at this present time.  WE pray for each and everyone of you who have taken the time to view our website, 
+            the many hours that have been volunteered as of this time , and the people that have donated monitary donations to help those in and around Our Community.
+
+        </p>
+        <p><a class="btn btn-facebook"target="_blank" href="https://www.facebook.com/kindomconnections"> FACEBOOK &raquo;</a></p>
+    </div> 
+    <div class="col-md-4">
+        
+        @if(TempData.ContainsKey("VolunteerName"))
+        {
+            <h2>Top Volunteer: @TempData["VolunteerName"].ToString()</h2>
+        }
+        else
+        {
+            <h2>The position for top volunteer is still open.</h2>
+        }
+        <h3>Partner with us to Volunteer or make a Donation </h3>
+        <p><img src="~/Custom/Images/Harmony.jpg" /> </p>
+    </div>
+    <div class="col-md-4">
+        <h2>
+            Word of the Day
+        </h2>
+        <p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="300" height="190" id="votd" align="middle">
+    <param name="allowScriptAccess" value="sameDomain" />
+    <param name="movie" value="https://www.biblegateway.com/usage/votd/votd.swf" />
+    <param name="quality" value="high" />
+    <param name="bgcolor" value="#ffffff" />
+    <embed src="https://www.biblegateway.com/usage/votd/votd.swf" quality="high" bgcolor="#ffffff" width="300" height="190" name="votd" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object></p>
+        
+         </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@using KingdomConnections.Models
+@model KingdomConnections.ViewModels.DonationInfoVM
+@{
+    ViewBag.Title = "ViewAllDonations";
+}
+
+<h2>ViewAllDonations</h2>
+
+
+
+
+<!--View All Donations Table Div-->
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>  </th>
+                <th class="text-center">User ID # </th>
+                <th class="text-center">Donation Amount</th>
+                <th  class="text-center"> Donation Date</th>
+                <th class="text-center">Tax Receipt </th>
+                <th class="text-center">Department of Donation</th>
+
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (DonationInfoPO donation in Model.ListOfAllDonations)
+
+            {
+                <tr class="text-center">
+                    <td></td>
+                    <td hidden>@donation.DonationID</td>
+                    <td>@donation.UserID</td>
+                    <td >@donation.Amount_of_Donation.ToString("C")</td>
+                    <td>@donation.Date_of_Donation.Month/@donation.Date_of_Donation.Day/@donation.Date_of_Donation.Year</td>
+                    <td>@donation.Tax_Receipt_Given</td>
+                    <td>@donation.Department_Need</td>
+
+                    @if (Session["UserName"] != null && (string)Session["Role"] != "power")
+                    {
+                        <td>
+                            @Html.ActionLink("Delete ", "DeleteDonationByID", "Donation",
+                       new { DonationID = donation.DonationID }, null)
+                        </td>
+                       
+                    }
+                    else
+                    {
+
+                    }
+
+                    <td>@Html.ActionLink("Update ", "UpdateDonationsByID", "Donation",
+                       new { DonationID = donation.DonationID }, null)</td>
+                   
+
+
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <!--No need for footer-->
+        </tfoot>
+    </table>
+</div>
+
+

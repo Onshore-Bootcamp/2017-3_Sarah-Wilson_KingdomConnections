@@ -1,0 +1,72 @@
+﻿@model KingdomConnections.ViewModels.UserInfoVM
+
+@{
+    ViewBag.Title = "Partner with US";
+}
+
+<h2>
+   
+    <img src="~/Custom/Images/partnering with us.jpg" />
+
+</h2>
+
+@using (Html.BeginForm("CreateUser", "Users", FormMethod.Post))
+{
+    <!--First Name Div-->
+    <div class="form-group">
+        @Html.LabelFor(model => Model.UserInfo.Name,"First & Last Name")
+        @Html.TextBoxFor(model => Model.UserInfo.Name, new { @class = "form-control", @placeholder = " Name..." })
+        @Html.ValidationMessageFor(model => Model.UserInfo.Name, "", new { @class = "text-danger" })
+    </div>
+    <!--Street Address Div-->
+    <div class="form-group">
+        @Html.LabelFor(model => Model.UserInfo.Street_Address,"Street Address")
+        @Html.TextBoxFor(model => Model.UserInfo.Street_Address, new { @class = "form-control", @placeholder = "Street Address..." })
+        @Html.ValidationMessageFor(model => Model.UserInfo.Street_Address, "", new { @class = "text-danger" })
+    </div>
+    <!--City, State, Zip Div-->
+    <div class="form-group">
+        @Html.LabelFor(model => Model.UserInfo.City_State_Zip,"City, State, Zip Code" )
+        @Html.TextBoxFor(model => Model.UserInfo.City_State_Zip, new { @class = "form-control", @placeholder = "City, State, Zip..." })
+        @Html.ValidationMessageFor(model => Model.UserInfo.City_State_Zip, "", new { @class = "text-danger" })
+    </div>
+    <!--Phone Number Div-->
+        <div class="form-group">
+            @Html.LabelFor(model => Model.UserInfo.Phone_Number, "Phone Number")
+            @Html.TextBoxFor(model => Model.UserInfo.Phone_Number, new { @class = "form-control", @placeholder = "Phone Number..." })
+            @Html.ValidationMessageFor(model => Model.UserInfo.Phone_Number, "", new { @class = "text-danger" })
+        </div>
+    <!--Login Div-->
+        <div class="form-group">
+            @Html.LabelFor(model => Model.UserInfo.Login, "Username")
+            @Html.TextBoxFor(model => Model.UserInfo.Login, new { @class = "form-control", @placeholder = "Username..." })
+            @Html.ValidationMessageFor(model => Model.UserInfo.Login, "", new { @class = "text-danger" })
+        </div>
+    <!--Password Div-->
+        <div class="form-group">
+            @Html.LabelFor(model => Model.UserInfo.Password)
+            @Html.TextBoxFor(model => Model.UserInfo.Password, new { @class = "form-control", @placeholder = "Password..." })
+            @Html.ValidationMessageFor(model => Model.UserInfo.Password, "", new { @class = "text-danger" })
+        </div>
+    <!--Role Request Div-->
+    if (Session["UserName"] != null && (string)Session["Role"] == "admin")
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => Model.UserInfo.Role)
+            @Html.TextBoxFor(model => Model.UserInfo.Role, new { @class = "form-control", @placeholder = "Role Request..." })
+            @Html.ValidationMessageFor(model => Model.UserInfo.Role, "", new { @class = "text-danger" })
+        </div>
+    }
+    else
+    {
+           @Html.HiddenFor(model => Model.UserInfo.Role)
+    }
+
+
+
+
+    <!--Submit button-->
+    <div class="form-group">
+        <input class="btn btn-success" type="submit" value="Partner" />
+    </div>
+}
